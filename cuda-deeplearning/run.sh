@@ -13,7 +13,7 @@ time nvidia-docker run \
 	-v ${mnt_path}/../..:${mnt_target} \
 	-w /root \
 	-v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
-	-it --rm test/test-0
+	-it --rm dev_docker/cuda-dev
 
 #xhost -
 xhost -local:
