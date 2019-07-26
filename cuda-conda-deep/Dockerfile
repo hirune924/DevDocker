@@ -26,7 +26,7 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
-RUN apt-get update --fix-missing && apt-get install -y unzip && \
+RUN apt-get update --fix-missing && apt-get install -y unzip \
     && \
     apt-get clean && \
     apt-get autoremove && \
