@@ -26,7 +26,7 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
-RUN apt-get update --fix-missing && apt-get install -y unzip \
+RUN apt-get update --fix-missing && apt-get install -y unzip htop \
     && \
     apt-get clean && \
     apt-get autoremove && \
@@ -36,6 +36,12 @@ RUN conda install -y absl-py && \
     conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch
 
 RUN pip install adabound tensorboardX
+
+RUN git clone https://github.com/NVIDIA/apex & \
+    cd apex & \
+    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ & \
+    cd .. & rm -rf apex\    
+
 
 ## Install useful packages using apt-get
 #RUN apt-get update && apt-get install -y \
