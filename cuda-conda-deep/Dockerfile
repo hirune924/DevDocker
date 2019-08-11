@@ -35,7 +35,7 @@ RUN apt-get update --fix-missing && apt-get install -y unzip htop \
 RUN conda install -y absl-py && \
     conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch
 
-RUN pip install adabound tensorboardX
+RUN pip install adabound tensorboardX pytorch-lightning
 
 RUN git clone https://github.com/NVIDIA/apex & \
     cd apex & \
