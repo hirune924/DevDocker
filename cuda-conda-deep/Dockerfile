@@ -26,16 +26,18 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
-RUN apt-get update --fix-missing && apt-get install -y unzip htop \
+RUN apt-get update --fix-missing && apt-get install -y unzip htop vim \
     && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
+RUN conda install -y python=3.6
+
 RUN conda install -y absl-py && \
     conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch
 
-RUN pip install adabound tensorboardX pytorch-lightning
+RUN pip install adabound tensorboardX pytorch-lightning catalyst[all]
 
 RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
