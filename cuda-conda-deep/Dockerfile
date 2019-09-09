@@ -32,10 +32,9 @@ RUN apt-get update --fix-missing && apt-get install -y unzip htop vim \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-RUN conda install -y python=3.6
-
 RUN conda install -y absl-py && \
-    conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch
+    conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch && \
+    conda install -y python=3.6
 
 RUN pip install adabound tensorboardX pytorch-lightning catalyst[all]
 
