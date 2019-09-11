@@ -40,8 +40,9 @@ RUN pip install adabound tensorboardX pytorch-lightning catalyst[all]
 
 RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
-    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ && \
-    cd .. && rm -rf apex\   
+    pip install -v --no-cache-dir ./ && \
+    cd .. && rm -rf apex\ 
+    #pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ && \
 
 ## Install useful packages using apt-get
 #RUN apt-get update && apt-get install -y \
