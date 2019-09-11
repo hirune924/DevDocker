@@ -12,7 +12,8 @@ RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificate
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+#RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -32,9 +33,6 @@ RUN apt-get update --fix-missing && apt-get install -y unzip htop vim \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-RUN conda install -y python=3.6 && \
-    conda update -n base -c defaults conda
-
 RUN conda install -y absl-py && \
     conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch=1.1.0
 
@@ -44,7 +42,6 @@ RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
     pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ && \
     cd .. && rm -rf apex\    
-
 
 ## Install useful packages using apt-get
 #RUN apt-get update && apt-get install -y \
