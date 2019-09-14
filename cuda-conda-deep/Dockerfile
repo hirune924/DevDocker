@@ -1,9 +1,8 @@
-FROM nvidia/cuda:10.0-devel-ubuntu18.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 MAINTAINER "@hirune924"
-
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
@@ -44,7 +43,6 @@ RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
     pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ && \
     cd .. && rm -rf apex\
-
 ## Install useful packages using apt-get
 #RUN apt-get update && apt-get install -y \
 #		build-essential \
