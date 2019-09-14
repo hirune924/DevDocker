@@ -12,8 +12,8 @@ RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificate
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh && \
-#RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+#RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -33,10 +33,11 @@ RUN apt-get update --fix-missing && apt-get install -y unzip htop vim \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-RUN conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch
-    #conda install -y pytorch=1.1.0 torchvision cudatoolkit=10.0 -c pytorch
+#RUN conda install -y pytorch=1.1.0 torchvision cudatoolkit=10.0 -c pytorch
+RUN conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch && \
+    conda install -y absl-py
 
-RUN pip install adabound tensorboardX pytorch-lightning catalyst[all] absl-py
+RUN pip install adabound tensorboardX pytorch-lightning catalyst[all]
 
 RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
