@@ -13,6 +13,7 @@ time nvidia-docker run \
 	--env http_proxy=$http_proxy \
 	--env https_proxy=$https_proxy \
 	--env NVIDIA_VISIBLE_DEVICES=$nvidia_visible_devices \
+	--ipc=host \
 	-p 80:80 \
 	-p 8888:8888 \
 	-v ${mnt_path}/../..:${mnt_target} \
