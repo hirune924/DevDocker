@@ -38,7 +38,8 @@ RUN apt-get update --fix-missing && apt-get install -y unzip htop vim \
 RUN conda install -y pytorch torchvision cudatoolkit=10.0 -c pytorch && \
     conda install -y absl-py
 
-RUN pip install adabound tensorboardX pytorch-lightning catalyst[all] torchsummary lmdb
+RUN pip install adabound tensorboardX pytorch-lightning catalyst[all] torchsummary lmdb && \
+    pip install --extra-index-url https://developer.download.nvidia.com/compute/redist/cuda/10.0 nvidia-dali
 
 RUN git clone https://github.com/NVIDIA/apex && \
     cd apex && \
